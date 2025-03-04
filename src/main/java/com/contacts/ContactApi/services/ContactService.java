@@ -17,6 +17,12 @@ public class ContactService {
 	private ContactRepository repository;
 	
 	@Transactional(readOnly = true)
+	public ContactDTO findById(Long id) {
+		Contact cont = repository.findById(id).get();
+		return new ContactDTO(cont);
+	}
+	
+	@Transactional(readOnly = true)
 	public List<ContactDTO> findAll(ContactDTO dto){
 		List<Contact> result = repository.findAll(); 
 		return result.stream().map(x -> new ContactDTO(x)).toList();
@@ -31,4 +37,15 @@ public class ContactService {
 		repository.save(cont);
 		return new ContactDTO(cont);
 	}
+	
+	@Transactional
+	public ContactDTO update(Long id, ContactDTO dto) {
+		Contact cont = repository.getReferenceById(id);
+		cont.setName(dto.getName());
+		cont.setEmail(dto.getEmail());
+		cont.setPhone(dto.getPhone());
+		repository.save(cont);
+		return new ContactDTO(cont);
+	}
+	
 }
