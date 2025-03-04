@@ -9,7 +9,7 @@ public class ContactDTO {
 	
 	private Long id;
 	private String name;
-	private String emai;
+	private String email;
 	private String phone;
 	
 	public ContactDTO() {}
@@ -17,14 +17,14 @@ public class ContactDTO {
 	public ContactDTO(Long id, String name, String emai, String phone) {
 		this.id = id;
 		this.name = name;
-		this.emai = emai;
+		this.email = emai;
 		this.phone = phone;
 	}
 
 	public ContactDTO(Contact contact) {
 		id = contact.getId();
 		name = contact.getName();
-		emai = contact.getEmail();
+		email = contact.getEmail();
 		phone = contact.getPhone();
 	}
 	
