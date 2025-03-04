@@ -48,4 +48,8 @@ public class ContactService {
 		return new ContactDTO(cont);
 	}
 	
+	@Transactional
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
 }
